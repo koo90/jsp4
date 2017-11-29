@@ -27,8 +27,8 @@ function checkValue() {
 }
 function formSubmit(){
 	var param = {};
-	param["id"] = document.getElementById("id").vlaue;
-	param["pwd"] = document.getElementById("pwd").vlaue;
+	param["id"] = document.getElementById("id").value;
+	param["pwd"] = document.getElementById("pwd").value;
 	
 	alert(JSON.stringify(param));
 	

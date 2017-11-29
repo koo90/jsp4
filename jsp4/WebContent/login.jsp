@@ -30,12 +30,12 @@ function formSubmit(){
 	param["id"] = document.getElementById("id").value;
 	param["pwd"] = document.getElementById("pwd").value;
 	
-	alert(JSON.stringify(param));
+	//alert(JSON.stringify(param));
 	
-	//param = [{"id" : "test", "pwd":"password" },
-	//	{"id" : "test2", "pwd":"password2" }];
-	//alert(param[1].id);
-	//alert(param[1].pwd);
+	param = [{"id" : "test", "pwd":"password" },
+		{"id" : "test2", "pwd":"password2" }];
+	alert(param[1].id);
+	alert(param[1].pwd);
 }
 </script>
 <form method="post" action="/test.login" onsubmit="return checkValue()">

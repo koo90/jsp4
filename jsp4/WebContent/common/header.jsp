@@ -12,12 +12,15 @@
 String rootPath = request.getContextPath();
 UserInfo user = null;
 user = (UserInfo) session.getAttribute("user");
-String m2 = "로그인";
-String u2 = "/user/login.jsp";
+String menu = "Login";
+String url = rootPath + "/user/login.jsp";
+String script = "";
 if(user!=null){
-	m2 = "로그아웃";
-	u2 = "/user/logout.user?cmd=logout";
-}
+	menu = "logout";
+	url = "#";
+	script = "onclick= 'logout()'";
+			//rootPath + "/user/logout.user?cmd=logout";
+} 
 %>
 
 <script src="<%=rootPath%>/js/jquery-3.2.1.min.js"></script>
@@ -32,7 +35,13 @@ $(document).ready(function(){
 	$("table[id='menu'] tr td").click(function(){
 		location.href=this.getAttribute("data-url");
 	})
-})
+});
+
+function logout() {
+	if(confirm("진짜로 로그아웃 하시겠습니까?")){
+		location.href="asdfsa.user?cmd=logout";
+	}
+}
 </script>
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
@@ -43,12 +52,12 @@ $(document).ready(function(){
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="<%=rootPath%>/">Project name</a>
+          <a class="navbar-brand" href="<%=rootPath%>/">JSP4</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="<%=rootPath%>/">Home</a></li>
-            <li><a href="<%=rootPath%>/user/login.jsp">login</a></li>
+            <li><a href="<%=url%>"<%= script%>><%=menu%></a></li>
             <li><a href="<%=rootPath%>/user/join.jsp">join us</a></li>
             <li><a href="<%=rootPath%>/user/list.jsp">User list</a></li>
           </ul>

@@ -14,15 +14,18 @@
 		<input type="password" name="pwd" id="pwd" class="form-control"
 			placeholder="Password" required>
 			
-		<label for="id" class="sr-only">이름</label> <input type="text"
+		<label for="id" class="sr-only">이름</label> 
+		<input type="text"
 			id="name" name="name" class="form-control" placeholder="이름" required
 			>
 			
-		<label for="id" class="sr-only">나이</label> <input type="text"
+		<label for="id" class="sr-only">나이</label> 
+		<input type="text"
 			id="age" name="age" class="form-control" placeholder="나이" required
 			>
 				
-		<label for="id" class="sr-only">주소</label> <input type="text"
+		<label for="id" class="sr-only">주소</label> 
+		<input type="text"
 			id="address" name="address" class="form-control" placeholder="주소" required
 			>
 				    

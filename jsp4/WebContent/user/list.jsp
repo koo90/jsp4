@@ -7,7 +7,7 @@ function afterLogin(result){
 	var ths = $("table[id='table'] thead tr th");
 	var str="";
 	for(var i=0; i<result.length; i++){
-		str += "<tr>";
+		str += "<tr data-view='" + result[i].userNo + "'>";
 		for(var j=0;j<ths.length;j++){
 			var th = ths[j].getAttribute("data-field");
 			str += "<td class='text-center'>" + result[i][th] + "</td>"; 
@@ -16,6 +16,10 @@ function afterLogin(result){
 		str += "</tr>"
 	}
 	$("#result_tbody").html(str);
+	$("tr[data-view]").click(function(){
+		var userNo = this.getAttribute("data-view");
+		location.href="./view.jsp?userno=" + userNo;
+	})
 }
 
 $(document).ready(function(){
@@ -45,7 +49,7 @@ $(document).ready(function(){
 			<th class="text-center" data-field="userName">Name</th>
 			<th class="text-center" data-field="userAge">Age</th>
 			<th class="text-center" data-field="userAddress">Address</th>
-			</tr>
+		</tr>
 			</thead>
 			<tbody id="result_tbody">
 			</tbody>

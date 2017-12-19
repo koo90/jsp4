@@ -110,6 +110,33 @@ public class UserServlet extends HttpServlet{
 			}
 			Gson gs = new Gson();
 			out.println(gs.toJson(hm));
+		}else if(cmd.equals("update")) {
+			int result = us.updateUser(null);
+			HashMap<String, String> hm = 
+					new HashMap<String, String>();
+			hm.put("result", "no");
+			hm.put("msg", "회원 수정이 실패하셨습니다.");
+			if(result!=0) {
+				hm.put("result", "ok");
+				hm.put("msg", "회원수정이 성공하셨습니다.");
+				hm.put("url", "/user/view.jsp?userno=");
+			}
+			Gson gs = new Gson();
+			out.println(gs.toJson(hm));
+		}else if(cmd.equals("checkPwd")){
+			String checkPwd = req.getParameter("checkPwd");
+			String userPwd = ((UserInfo)req.getSession().getAttribute("user"))
+					.getUserPwd();
+			HashMap<String, String> hm = 
+					new HashMap<String, String>();
+			hm.put("result", "no");
+			hm.put("msg", "비밀번호가 틀렸습니다.");
+			if(checkPwd.equals(userPwd)) {
+				hm.put("result", "ok");
+				hm.put("msg", "");
+			}
+			Gson gs = new Gson();
+			out.println(gs.toJson(hm));
 		}else {
 			res.sendRedirect("/error.jsp");
 		}

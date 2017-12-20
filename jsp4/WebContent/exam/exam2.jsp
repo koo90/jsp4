@@ -17,9 +17,35 @@ jstl's test : ${test}
 session test : ${s_test}
 <br>
 application test : ${a_test}
-
-<c:forEach var="num" begin="5" end="100" step="5">
-${num}, 
+<%
+String[] strs = {"1","2","3"};
+UserInfo[] userList = new UserInfo[3];
+UserInfo ui;
+for(int i=0;i<3;i++){
+	ui = new UserInfo();
+	ui.setUserNo(i + 1);
+	ui.setUserName("test" + (i + 1));
+	ui.setUserAge(i + 1);
+	userList[i] = ui;
+}
+request.setAttribute("userList", userList);
+%>
+<c:forEach var="str" items="${strAttay}">
+${str}, 
 </c:forEach>
+<table border="1">
+	<tr>
+		<th>유저번호</th>
+		<th>유저이름</th>
+		<th>유저나이</th>
+	</tr>
+	<c:forEach var="ui" items="${userList}">
+		<tr>
+			<td>${ui.userNo}</td>
+			<td>${ui.userName}</td>
+			<td>${ui.userAge}</td>
+		</tr>
+	</c:forEach>
+</table>
 </body>
 </html>

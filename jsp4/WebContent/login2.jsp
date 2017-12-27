@@ -7,9 +7,6 @@
 <title>Login</title>
 </head>
 <body>
-<%!
-%>
-<!-- 수정수정수정!! -->
 <script>
 function checkValue(){
 	var id = document.getElementById("id");
@@ -27,28 +24,11 @@ function checkValue(){
 	}
 	return true;
 }
-function formSubmit(){
-	var param = {};
-	param["id"] = document.getElementById("id").value;
-	param["pwd"] = document.getElementById("pwd").value;
-	
-	//alert(JSON.stringify(param));
-	
-	param = [{"id" : "test1", "pwd":"password1" },
-		{"id" : "test2", "pwd":"password2" }];
-	alert(param[1].id);
-	alert(param[1].pwd);
-}
 </script>
-<form method='post' action="/te.login" onsubmit="return checkValue()">
+<form method='get' action="/login_ok.jsp" onsubmit="return checkValue()">
 아이디 : <input type="text" name="id" id="id"><br>
 비밀번호 : <input type="password" name="pwd" id="pwd"><br>
-<input type="button" value="login" onclick="formSubmit()"> 
+<input type="submit" value="login"> 
 </form>
 </body>
 </html>
-
-
-
-
-

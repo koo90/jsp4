@@ -9,21 +9,20 @@ import java.util.HashMap;
 
 public class ListExam {
 
-	public ArrayList<HashMap<String, String>>
-	getUserList(){
-		ArrayList<HashMap<String, String>> al = new ArrayList<HashMap<String, String>>();
-		HashMap<String, String> hm = new HashMap<String, String>();
+	public ArrayList<HashMap<String,String>> getUserList(){
+		ArrayList<HashMap<String,String>> al= 
+				new ArrayList<HashMap<String,String>>();
 		DBCon dbCon = new DBCon();
 		try {
-
 			Connection con = dbCon.getConnection();
-			String sql = "select * from user_info ui, depart_info di"
-					+ " where ui.dino = di.dino";
+			String sql = "select * from user_info ui," + 
+					" depart_info di" + 
+					" where ui.dino = di.dino";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			
-			while (rs.next()) {
-				hm = new HashMap<String, String>();
+			while(rs.next()) {
+				HashMap<String, String> hm  = new HashMap<String,String>();
 				hm.put("userno", rs.getString("userno"));
 				hm.put("username", rs.getString("username"));
 				hm.put("userid", rs.getString("userid"));
@@ -32,16 +31,15 @@ public class ListExam {
 				hm.put("dino", rs.getString("dino"));
 				hm.put("useraddress", rs.getString("useraddress"));
 				hm.put("diname", rs.getString("diname"));
-				hm.put("dietc", rs.getString("dietc"));				
+				hm.put("dietc", rs.getString("dietc"));
 				al.add(hm);
 			}
-		} catch (Exception e) {
+		}catch(Exception e) {
 			System.out.println(e);
-		} finally {
+		}finally{
 			try {
 				dbCon.closeCon();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -49,9 +47,9 @@ public class ListExam {
 	}
 	public static void main(String[] args) {
 		ListExam le = new ListExam();
-		ArrayList<HashMap<String, String>> strs
+		ArrayList<HashMap<String,String>> strs 
 		= le.getUserList();
-		for(HashMap<String, String> hm : strs) {
+		for(HashMap<String,String> hm : strs) {
 			System.out.println(hm);
 		}
 	}

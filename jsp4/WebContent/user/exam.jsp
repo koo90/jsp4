@@ -4,7 +4,14 @@
 <body>
 <div id="result_div"></div>
 <script>
-	$("#result_div").html("<a href='http://naver.com'>하하하</a>");
+	var str = "<table border='1'>";
+	str +="<tr>";
+	str +="<td>하하</td>";
+	str +="<td>하하</td>";
+	str +="<td>하하</td>";
+	str +="</tr>";
+	str +="</table>";
+	$("#result_div").html(str);
 </script>
 </body>
 </html>

@@ -1,3 +1,4 @@
+
 <%@page import="java.util.Iterator"%>
 <%@page import="com.test.jsp.common.ListExam"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -19,19 +20,20 @@ session test : ${s_test}
 application test : ${a_test}
 <%
 String[] strs = {"1","2","3"};
+request.setAttribute("strArray",strs);
 UserInfo[] userList = new UserInfo[3];
 UserInfo ui;
 for(int i=0;i<3;i++){
 	ui = new UserInfo();
-	ui.setUserNo(i + 1);
-	ui.setUserName("test" + (i + 1));
-	ui.setUserAge(i + 1);
+	ui.setUserName("test" + (i+1));
+	ui.setUserAge(i+1);
+	ui.setUserNo(i+1);
 	userList[i] = ui;
 }
-request.setAttribute("userList", userList);
+request.setAttribute("userList",userList);
 %>
-<c:forEach var="str" items="${strAttay}">
-${str}, 
+<c:forEach var="str" items="${strArray}">
+${str},
 </c:forEach>
 <table border="1">
 	<tr>

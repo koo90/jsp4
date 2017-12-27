@@ -8,14 +8,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>로그인</title>
 </head>
-<link rel="stylesheet" href="<%=rootPath%>/ui/signin.css"/>
-<% 
-if(user!=null){
+<link rel="stylesheet" href="<%=rootPath%>/ui/sign.css"/>
+<div class="container">
+<%
+if(user!=null){ 
+	out.println("<br><br><br>");
 out.println(user.getUserName() + "님 환영해요~~");
 out.println(user.getUserAge() + "살 이시네요");
+
 }else{
 %>
-<div class="container">
 	<form class="form-signin" action="/login.user" method="post">
 		<h2 class="form-signin-heading">Please login</h2>
 		<label for="inputEmail" class="sr-only">ID</label> <input type="text"
@@ -32,8 +34,7 @@ out.println(user.getUserAge() + "살 이시네요");
 		<input  class="btn btn-lg btn-primary btn-block"
 			type="button" id="loginBtn" value="Login">
 	</form>
-</div>
-<script >
+<script>
 function afterLogin(obj){
 	//var obj = JSON.parse(re);
 	alert(obj.msg);
@@ -52,17 +53,18 @@ $("#loginBtn").click(function(){
 	$.ajax({
 		type : "post",
 		url : url,
-		dataType : "json",
+		dataType: "json",
 		data : params,
 		success : afterLogin,
 		error : function(xhr,status){
 			alert("에러 : " + xhr.responseText);
 		}
 	});
-})
+});
 </script>
 <%
 }
 %>
+</div>
 </body>
 </html>
